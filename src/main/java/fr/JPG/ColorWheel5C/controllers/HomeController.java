@@ -17,9 +17,13 @@ public class HomeController {
     @RequestMapping("/")
     public Map status()
     {
+        // Procédure pour enregistrer et retourner la version application (depuis le fichier de config application.properties)
         Map mapVersion = new HashMap<String,String>();
         mapVersion.put("app-version",applicationVersion);
         return mapVersion;
+
+        // Procédure pour lire et stocker toutes les Questions et Expressions pour le test.
+
     }
 
 }
