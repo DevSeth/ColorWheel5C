@@ -1,0 +1,20 @@
+DROP TABLE expressions;
+DROP TABLE questions;
+
+CREATE TABLE expressions
+(
+	id 	SERIAL PRIMARY KEY,
+	type	smallint,
+	code	varchar(7) NOT NULL,
+	verbe	varchar(30) NOT NULL,
+	devise	varchar(60) NOT NULL
+);
+
+CREATE TABLE questions
+(
+	id	SERIAL PRIMARY KEY,
+	type	smallint,
+	libelle varchar(100)  NOT NULL
+);
+
+
