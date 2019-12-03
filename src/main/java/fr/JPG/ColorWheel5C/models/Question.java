@@ -2,10 +2,9 @@ package fr.JPG.ColorWheel5C.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
+
 
 @Entity(name = "questions")
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
@@ -16,6 +15,8 @@ public class Question {
     private long id;
     private int type;
     private String libelle;
+    @OneToMany(mappedBy = "question")                   // Une question a plusieurs propositions. Une proposition n'appartient qu'à une question. Relation One(question) toMany(propositions)
+    Collection<Proposition> listePropostions;           // Il existe donc une liste de propositions par Question. Chez les Propositions, on ajoute un objet Question pour mapper dessus, et effectuer la liaison entre la Question et les Propositions.
 
     public Question() {
     }
@@ -42,5 +43,13 @@ public class Question {
 
     public void setLibelle(String libelle) {
         this.libelle = libelle;
+    }
+
+    public Collection<Proposition> getListePropostions() {
+        return listePropostions;
+    }
+
+    public void setListePropostions(Collection<Proposition> listePropostions) {
+        this.listePropostions = listePropostions;
     }
 }
